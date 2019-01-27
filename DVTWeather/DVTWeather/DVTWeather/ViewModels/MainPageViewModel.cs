@@ -28,8 +28,12 @@ namespace DVTWeather.ViewModels
 
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
-            var res = await _weather.GetWeather();
+            var res = await _weather.GetForecastWeather();
+            var res2 = await _weather.GetCurrentWeather();
+
+
             Debug.WriteLine(res);
+            Debug.WriteLine(res2);
             foreach (var item in res)
             {
                 Debug.WriteLine(item.clouds);

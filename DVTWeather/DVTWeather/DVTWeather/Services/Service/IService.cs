@@ -16,7 +16,7 @@ namespace DVTWeather.Services.Service
         /// </summary>
         /// <param name="url">the URI to query</param>
         /// <returns>an observable collection of <seealso cref="TResult"/></returns>
-        Task<ServiceResult> GetAsync(string url);
+        Task<TResult> GetAsync<TResult>(string url, object payload);
 
         /// <summary>
         /// posts an entity to the data store

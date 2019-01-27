@@ -9,6 +9,7 @@ using Prism.Logging;
 using DVTWeather.Services.Weather;
 using DVTWeather.Services.Service;
 using DVTWeather.Helpers.Connectivity;
+using DVTWeather.Helpers.Geolocation;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace DVTWeather
@@ -48,6 +49,7 @@ namespace DVTWeather
 
             // Xamarin Essentails
             container.RegisterSingleton<IConnectivity, Connectivity>();
+            container.RegisterSingleton<IGeolocation, Geolocation>();
         }
 
         private void LogUnobservedTaskExceptions()

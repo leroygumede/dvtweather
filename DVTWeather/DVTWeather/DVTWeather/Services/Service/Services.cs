@@ -32,11 +32,12 @@ namespace DVTWeather.Services.Service
             throw new NotImplementedException();
         }
 
-        public async Task<ServiceResult> GetAsync(string url)
+        public async Task<TResult> GetAsync<TResult>(string url, object payload)
         {
             try
             {
                 var token = AppConstants.AppId;
+
 
                 return await Task.Run(() => BaseUrl
                   .AppendPathSegment(url)
@@ -44,10 +45,10 @@ namespace DVTWeather.Services.Service
                   {
                       APPID = token,
                       id = AppConstants.CountryId,
-                      cnt = 5
                   })
+                  .SetQueryParams(payload)
                   .GetAsync()
-                  .ReceiveJson<ServiceResult>());
+                  .ReceiveJson<TResult>());
             }
             catch (FlurlHttpException httpex)
             {

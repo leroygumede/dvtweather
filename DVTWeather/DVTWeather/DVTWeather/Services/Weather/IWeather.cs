@@ -7,6 +7,7 @@ namespace DVTWeather.Services.Weather
 {
     public interface IWeather
     {
-        Task<IList<List>> GetWeather();
+        Task<ServiceCurrentResult> GetCurrentWeather();
+        Task<IList<List>> GetForecastWeather();
     }
 }
