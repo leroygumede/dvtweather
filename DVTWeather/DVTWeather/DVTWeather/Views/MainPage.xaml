@@ -1,111 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="DVTWeather.Views.MainPage" 
-    BackgroundColor="White"
-    Padding="0"
-    Title="{Binding Title}">
-    <StackLayout HorizontalOptions="StartAndExpand" Spacing="0" VerticalOptions="StartAndExpand">
-        
-        
-<Grid BackgroundColor="White" RowSpacing="0" >
-  <Grid.RowDefinitions>
-    <RowDefinition Height="Auto" />  
-  </Grid.RowDefinitions>
-  <Grid.ColumnDefinitions>
-    <ColumnDefinition Width="*" />
-  </Grid.ColumnDefinitions>
-            
-           <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="StartAndExpand"  >
-                <Image Source="forest_sunny.png" Style="{StaticResource ImageHeader}" />
-            </StackLayout> 
-            
-           <StackLayout Grid.Row="0" Grid.Column="0" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" >
-                <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0"  HorizontalOptions="CenterAndExpand" >
-                     <Label Text="25" FontSize="65" FontAttributes="Bold"  TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
-                    <Label Text="O" FontSize="25"    TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DVTWeather.Views.MainPage" BackgroundColor="White" Padding="0" Title="{Binding Title}">
+    <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="Blue" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <Image Source="forest_sunny.png" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+            </StackLayout>
+            <StackLayout Grid.Row="0" Grid.Column="0" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="25" FontSize="65" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+                    <Label Text="O" FontSize="25" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
                 </StackLayout>
- 
                 <Label Text="SUNNY" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalTextAlignment="Center" />
-            </StackLayout> 
-            
-                    
-    </Grid>
-        
-        
-        
-        
-        
-   
-        
-        
-            <StackLayout BackgroundColor="#47AB2F"  Margin="0, 0, 0, 1"  HeightRequest="45" Orientation="Horizontal" Padding="10" VerticalOptions="Start" >
-                
-                <StackLayout HorizontalOptions="Start" Spacing="0" BackgroundColor="Maroon">
-                    
-                    <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
-                         <Label Text="25" FontSize="20" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
-                        <Label Text="O" FontSize="10" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
-                    </StackLayout>
-                   
-                    <Label Text="min" TextColor="White" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-                
-                
-                
-                <StackLayout HorizontalOptions="CenterAndExpand" Spacing="0" >
-                    
-                    <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
-                         <Label Text="25" FontSize="20" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
-                        <Label Text="O" FontSize="10" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
-                    </StackLayout>
-                   
-                    <Label Text="Current" TextColor="White" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-                
-                
-                
-                <StackLayout HorizontalOptions="End" Spacing="0">
-                    
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                         <Label Text="25" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Start" />
-                        <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
-                    </StackLayout>
-                   
-                    <Label Text="max" TextColor="White" HorizontalTextAlignment="Center"/>
-                </StackLayout>
-                
-                 
             </StackLayout>
-            
-            
-            
-            <StackLayout Padding="10"   BackgroundColor="#47AB2F" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                
-               <StackLayout Orientation="Horizontal" Spacing="0">
-                    <Label Text="Tuesday" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
-                    <Image Source="clear.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
-                
-                
-                <StackLayout HorizontalOptions="End" Spacing="0">
-                    
-                    <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
-                         <Label Text="25" TextColor="White" FontSize="20" HorizontalTextAlignment="Center" VerticalOptions="Start" />
-                        <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
-                    </StackLayout>
-                   
-                    <Label Text="max" TextColor="White" HorizontalTextAlignment="Center"/>
+        </Grid>
+        <StackLayout BackgroundColor="{StaticResource Sunny}" Margin="0, 0, 0, 1" HeightRequest="45" Orientation="Horizontal" Padding="10" VerticalOptions="Start">
+            <StackLayout Style="{StaticResource WeatherContainer_Left}">
+                <StackLayout Style="{StaticResource WeatherContainer_Temp_Left}">
+                    <Label Style="{StaticResource WeatherContainer_Temp_Label_Left}" />
+                    <Label Style="{StaticResource WeatherContainer_Temp_Degree_Left}" />
                 </StackLayout>
-                
-                 </StackLayout>
-            
+                <Label Style="{StaticResource WeatherContainer_Label_Left}" />
             </StackLayout>
-            
- 
-        
-        
-        
-        
+            <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="80" Padding="0" Spacing="0">
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="25" FontSize="20" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+                    <Label Text="O" FontSize="10" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+                <Label Text="Current" TextColor="White" HorizontalTextAlignment="Center" />
+            </StackLayout>
+            <StackLayout HorizontalOptions="End" WidthRequest="80" Padding="0" Spacing="0">
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                    <Label Text="25" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+                <Label Text="max" TextColor="White" HorizontalTextAlignment="End" />
+            </StackLayout>
+        </StackLayout>
+        <StackLayout Padding="10" BackgroundColor="#47AB2F" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <Label Text="Tuesday" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+                <Image Source="clear.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
+                <StackLayout HorizontalOptions="End" WidthRequest="90" Padding="0" Spacing="0">
+                    <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                        <Label Text="25" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                        <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
+                    </StackLayout>
+                    <Label Text="max" TextColor="White" HorizontalTextAlignment="End" />
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
