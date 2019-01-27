@@ -23,20 +23,15 @@ namespace DVTWeather.ViewModels
             NavigationService = navigationService;
         }
 
-        public virtual void OnNavigatedFrom(INavigationParameters parameters)
-        {
+        #region INavigationAware
 
-        }
+        public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
 
-        public virtual void OnNavigatedTo(INavigationParameters parameters)
-        {
+        public virtual void OnNavigatedTo(INavigationParameters parameters) { }
 
-        }
+        public virtual void OnNavigatingTo(INavigationParameters parameters) { }
 
-        public virtual void OnNavigatingTo(INavigationParameters parameters)
-        {
-
-        }
+        #endregion INavigationAware
 
         public virtual void Destroy()
         {

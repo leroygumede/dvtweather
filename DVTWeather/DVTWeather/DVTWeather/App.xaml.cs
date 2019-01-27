@@ -4,6 +4,11 @@ using DVTWeather.ViewModels;
 using DVTWeather.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Threading.Tasks;
+using Prism.Logging;
+using DVTWeather.Services.Weather;
+using DVTWeather.Services.Service;
+using DVTWeather.Helpers.Connectivity;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace DVTWeather
@@ -28,8 +33,29 @@ namespace DVTWeather
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            this.RegisterServices(containerRegistry);
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+
+        }
+
+        public void RegisterServices(IContainerRegistry container)
+        {
+            // Services
+            container.RegisterSingleton<IWeather, Weather>();
+            container.RegisterSingleton<IService, Services.Service.Services>();
+
+            // Xamarin Essentails
+            container.RegisterSingleton<IConnectivity, Connectivity>();
+        }
+
+        private void LogUnobservedTaskExceptions()
+        {
+            TaskScheduler.UnobservedTaskException += (sender, e) =>
+            {
+                Container.Resolve<ILoggerFacade>().Log(e.Exception.ToString(), Category.Exception, Priority.None);
+            };
         }
     }
 }
