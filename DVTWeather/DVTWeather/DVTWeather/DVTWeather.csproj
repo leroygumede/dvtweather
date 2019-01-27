@@ -23,5 +23,9 @@
     <Folder Include="Helpers\" />
     <Folder Include="Helpers\Connectivity\" />
     <Folder Include="Helpers\Geolocation\" />
+    <Folder Include="Converters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Models\ServiceResult.cs" />
   </ItemGroup>
 </Project>

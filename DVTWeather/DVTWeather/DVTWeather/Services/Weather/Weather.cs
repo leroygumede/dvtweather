@@ -58,7 +58,7 @@ namespace DVTWeather.Services.Weather
                     var location = await GetUserLocation();
 
                     var payload = new { cnt = 5, location.lat, location.lon };
-                    var responseCalls = await _service.GetAsync<ServiceResult>("forecast", payload);
+                    var responseCalls = await _service.GetAsync<ServiceForecastResult>("forecast", payload);
 
                     return responseCalls.list;
 

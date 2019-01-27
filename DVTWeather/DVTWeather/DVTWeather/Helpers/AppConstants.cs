@@ -16,6 +16,7 @@ namespace DVTWeather.Helpers
 
         public const string BaseUrl = "http://api.openweathermap.org/data/2.5/";
         public const string CountryId = "953987";
+        public const string Units = "metric";
 
 
         // http://api.openweathermap.org/data/2.5/

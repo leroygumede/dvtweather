@@ -2,7 +2,7 @@
 
 namespace DVTWeather.Models
 {
-    public class ServiceResult
+    public class ServiceForecastResult
     {
         public string cod { get; set; }
         public double message { get; set; }

@@ -1,59 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DVTWeather.Views.MainPage" BackgroundColor="White" Padding="0" Title="{Binding Title}">
-    <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" VerticalOptions="FillAndExpand">
-        <Grid BackgroundColor="Blue" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="DVTWeather.Views.MainPage" 
+             xmlns:converter="clr-namespace:DVTWeather.Converters;assembly=DVTWeather" 
+             BackgroundColor="White" Padding="0" Title="{Binding Title}">
+ <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:WeatherIconConverter x:Key="weatherIconConverter" />
+            <converter:BackgroundImageConverter x:Key="backgroundImageConverter" />
+            <converter:WeatherColorConverter x:Key="weatherColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <StackLayout HorizontalOptions="FillAndExpand" Spacing="0"  VerticalOptions="FillAndExpand"  Margin="0, 0, 0, -2">
+
+        
+              <AbsoluteLayout VerticalOptions="FillAndExpand"  Margin="0, 0, 0, -5" HorizontalOptions="FillAndExpand">
+            <Image  Source="{Binding CurrentConditions.weather[0].id, Converter={StaticResource backgroundImageConverter}}"  Aspect="Fill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" />
+            <StackLayout Padding="15" Spacing="0"   AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, .5, 1, .5" VerticalOptions="StartAndExpand">
+                 
+                <StackLayout   Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding CurrentConditions.main.temp}" FontSize="65" FontAttributes="Bold"   TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="FillAndExpand" />
+                    <Label Text="O" FontSize="25" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+                <Label Text="{Binding CurrentConditions.weather[0].description}" FontAttributes="Bold" FontSize="25" TextColor="White" HorizontalTextAlignment="Center" />
+            </StackLayout>   
+                
+            </StackLayout>
+        </AbsoluteLayout>
+        
+        
+        
+ 
+<!--         <AbsoluteLayout VerticalOptions="FillAndExpand"  Margin="0, 0, 0, -5" HorizontalOptions="FillAndExpand">
+            <Image Source="{Binding CurrentConditions.weather[0].id, Converter={StaticResource backgroundImageConverter}}" Aspect="Fill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" />
+            <StackLayout Padding="15" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, 1, 1, 0.5" VerticalOptions="CenterAndExpand">
+                 
+                <StackLayout   Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{Binding CurrentConditions.main.temp}" FontSize="65" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+                    <Label Text="O" FontSize="25" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+                <Label Text="{Binding CurrentConditions.weather[0].description}" FontAttributes="Bold" FontSize="25" TextColor="White" HorizontalTextAlignment="Center" />
+            </StackLayout>   
+                
+            </StackLayout>
+        </AbsoluteLayout> --> 
+        
+        
+<!--        
+        <Grid BackgroundColor="Blue" RowSpacing="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
+            
+            
             <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-                <Image Source="forest_sunny.png" Aspect="AspectFill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+           <Image Source="forest_sunny.png" Aspect="AspectFill" HeightRequest="350"    VerticalOptions="FillAndExpand" /> 
+                Image Source="{Binding CurrentConditions.weather[0].id, Converter={StaticResource backgroundImageConverter}}" Aspect="AspectFit"    VerticalOptions="FillAndExpand" />   
             </StackLayout>
+            
             <StackLayout Grid.Row="0" Grid.Column="0" Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                 <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
-                    <Label Text="25" FontSize="65" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+                    <Label Text="{Binding CurrentConditions.main.temp}" FontSize="65" FontAttributes="Bold" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
                     <Label Text="O" FontSize="25" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
                 </StackLayout>
-                <Label Text="SUNNY" FontAttributes="Bold" FontSize="35" TextColor="White" HorizontalTextAlignment="Center" />
+                <Label Text="{Binding CurrentConditions.weather[0].description}" FontAttributes="Bold" FontSize="25" TextColor="White" HorizontalTextAlignment="Center" />
             </StackLayout>
-        </Grid>
-        <StackLayout BackgroundColor="{StaticResource Sunny}" Margin="0, 0, 0, 1" HeightRequest="45" Orientation="Horizontal" Padding="10" VerticalOptions="Start">
+        </Grid>-->
+        
+        
+        
+       <StackLayout BackgroundColor="{Binding CurrentConditions.weather[0].id, Converter={StaticResource weatherColorConverter}}" Margin="0, 0, 0, 1" HeightRequest="45" Orientation="Horizontal" Padding="10" VerticalOptions="Start">
             <StackLayout Style="{StaticResource WeatherContainer_Left}">
                 <StackLayout Style="{StaticResource WeatherContainer_Temp_Left}">
-                    <Label Style="{StaticResource WeatherContainer_Temp_Label_Left}" />
+                    <Label Text="{Binding CurrentConditions.main.temp_min}" Style="{StaticResource WeatherContainer_Temp_Label_Left}" />
                     <Label Style="{StaticResource WeatherContainer_Temp_Degree_Left}" />
                 </StackLayout>
                 <Label Style="{StaticResource WeatherContainer_Label_Left}" />
             </StackLayout>
             <StackLayout HorizontalOptions="CenterAndExpand" WidthRequest="80" Padding="0" Spacing="0">
                 <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="CenterAndExpand">
-                    <Label Text="25" FontSize="20" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
+                    <Label Text="{Binding CurrentConditions.main.temp}" FontSize="20" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="Start" />
                     <Label Text="O" FontSize="10" TextColor="White" HorizontalTextAlignment="Center" VerticalOptions="StartAndExpand" />
                 </StackLayout>
                 <Label Text="Current" TextColor="White" HorizontalTextAlignment="Center" />
             </StackLayout>
             <StackLayout HorizontalOptions="End" WidthRequest="80" Padding="0" Spacing="0">
                 <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                    <Label Text="25" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="{Binding CurrentConditions.main.temp_max}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
                     <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
                 </StackLayout>
                 <Label Text="max" TextColor="White" HorizontalTextAlignment="End" />
             </StackLayout>
         </StackLayout>
-        <StackLayout Padding="10" BackgroundColor="#47AB2F" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <StackLayout Orientation="Horizontal" Spacing="0">
-                <Label Text="Tuesday" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
-                <Image Source="clear.png" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
-                <StackLayout HorizontalOptions="End" WidthRequest="90" Padding="0" Spacing="0">
-                    <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                        <Label Text="25" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
-                        <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
-                    </StackLayout>
-                    <Label Text="max" TextColor="White" HorizontalTextAlignment="End" />
+        
+        
+        
+        
+ 
+            
+     
+   
+             <StackLayout Padding="10" BackgroundColor="{Binding CurrentConditions.weather[0].id, Converter={StaticResource weatherColorConverter}}"  VerticalOptions="FillAndExpand">
+       
+                
+                
+                 <StackLayout Orientation="Horizontal" Spacing="0">
+            <Label Text="{Binding ForeCastConditions[0].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+            <Image Source="{Binding ForeCastConditions[0].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
+                    
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[0].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
                 </StackLayout>
+           
+                </StackLayout>
+            
+            
+            
+                 <StackLayout Orientation="Horizontal" Spacing="0">
+            <Label Text="{Binding ForeCastConditions[1].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+            <Image Source="{Binding ForeCastConditions[1].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
+                    
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[1].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+           
+                </StackLayout>
+            
+            
+            
+                 <StackLayout Orientation="Horizontal" Spacing="0">
+            <Label Text="{Binding ForeCastConditions[2].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+            <Image Source="{Binding ForeCastConditions[2].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
+                    
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[2].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+           
+                </StackLayout>
+            
+            
+                 <StackLayout Orientation="Horizontal" Spacing="0">
+            <Label Text="{Binding ForeCastConditions[3].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+            <Image Source="{Binding ForeCastConditions[3].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
+                    
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[3].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+           
+                </StackLayout>
+            
+            
+            
+            
+                 <StackLayout Orientation="Horizontal" Spacing="0">
+            <Label Text="{Binding ForeCastConditions[4].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+            <Image Source="{Binding ForeCastConditions[4].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
+                    
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[4].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
+                </StackLayout>
+           
+                </StackLayout>
+            
+            
+            
+            
+            
+            
+    </StackLayout>
+ 
+     
+        
+
+<!--  <ListView ItemsSource="{Binding ForeCastConditions}" HorizontalOptions="FillAndExpand"  BackgroundColor="#47AB2F" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                     
+                    <ViewCell> 
+    <StackLayout Padding="10"   >
+        <StackLayout Orientation="Horizontal" Spacing="0">
+            <Label Text="{Binding dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
+            <Image Source="{Binding weather[0].id, Converter={StaticResource weatherIconConverter}}"  HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
+             
+                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
+                    <Label Text="{Binding main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                    <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
+         
             </StackLayout>
         </StackLayout>
+    </StackLayout>
+                        
+                        
+        </ViewCell>
+        </DataTemplate>
+        </ListView.ItemTemplate>
+        </ListView>-->
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     </StackLayout>
 </ContentPage>

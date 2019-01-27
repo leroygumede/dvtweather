@@ -45,6 +45,7 @@ namespace DVTWeather.Services.Service
                   {
                       APPID = token,
                       id = AppConstants.CountryId,
+                      units = AppConstants.Units
                   })
                   .SetQueryParams(payload)
                   .GetAsync()

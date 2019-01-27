@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using DVTWeather.Services.Weather;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using DVTWeather.Models;
+using System.Collections.ObjectModel;
 
 namespace DVTWeather.ViewModels
 {
@@ -14,32 +17,29 @@ namespace DVTWeather.ViewModels
     {
         private readonly IWeather _weather;
 
+        public ServiceCurrentResult CurrentConditions { get; set; }
+        public ObservableCollection<DVTWeather.Models.List> ForeCastConditions { get; set; }
 
         public MainPageViewModel(INavigationService navigationService, IWeather weather)
             : base(navigationService)
         {
             _weather = weather;
 
-
-            Title = "Main Page";
-
-
         }
 
         public override async void OnNavigatingTo(INavigationParameters parameters)
         {
-            var res = await _weather.GetForecastWeather();
-            var res2 = await _weather.GetCurrentWeather();
 
-
-            Debug.WriteLine(res);
-            Debug.WriteLine(res2);
-            foreach (var item in res)
-            {
-                Debug.WriteLine(item.clouds);
-            }
+            await GetWeatherConditions();
         }
 
+        public async Task GetWeatherConditions()
+        {
+            CurrentConditions = await _weather.GetCurrentWeather();
+            ForeCastConditions = new ObservableCollection<List>(await _weather.GetForecastWeather());
 
+
+            Debug.WriteLine(ForeCastConditions);
+        }
     }
 }
