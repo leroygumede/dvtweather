@@ -182,6 +182,24 @@
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default@2x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <BundleResource Include="Resources\forest_sunny.png" />
+    <BundleResource Include="Resources\clear.png" />
+    <BundleResource Include="Resources\clear%402x.png" />
+    <BundleResource Include="Resources\clear%403x.png" />
+    <BundleResource Include="Resources\forest_cloudy.png" />
+    <BundleResource Include="Resources\forest_cloudy%402x.png" />
+    <BundleResource Include="Resources\forest_cloudy%403x.png" />
+    <BundleResource Include="Resources\forest_rainy.png" />
+    <BundleResource Include="Resources\forest_rainy%402x.png" />
+    <BundleResource Include="Resources\forest_rainy%403x.png" />
+    <BundleResource Include="Resources\forest_sunny%402x.png" />
+    <BundleResource Include="Resources\forest_sunny%403x.png" />
+    <BundleResource Include="Resources\partlysunny.png" />
+    <BundleResource Include="Resources\partlysunny%402x.png" />
+    <BundleResource Include="Resources\partlysunny%403x.png" />
+    <BundleResource Include="Resources\rain.png" />
+    <BundleResource Include="Resources\rain%402x.png" />
+    <BundleResource Include="Resources\rain%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -197,6 +197,36 @@
     <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\clear.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\forest_cloudy.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\forest_rainy.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\forest_sunny.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\partlysunny.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\rain.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\clear.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\forest_cloudy.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\forest_rainy.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\forest_sunny.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\partlysunny.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\rain.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\clear.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\forest_cloudy.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\forest_rainy.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\forest_sunny.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\partlysunny.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\rain.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\clear.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\forest_cloudy.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\forest_rainy.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\forest_sunny.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\partlysunny.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\rain.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\clear.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\forest_cloudy.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\forest_rainy.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\forest_sunny.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\partlysunny.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\rain.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
