@@ -7,7 +7,7 @@ using Prism.Ioc;
 
 namespace DVTWeather.Droid
 {
-    [Activity(Label = "DVT", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "DVT", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -16,10 +16,11 @@ namespace DVTWeather.Droid
             ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
-
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            //global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: true);
+
+            //global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
             global::FFImageLoading.ImageService.Instance.Initialize();
+            //FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
             Xamarin.Essentials.Platform.Init(this, bundle);
 
 
@@ -41,7 +42,5 @@ namespace DVTWeather.Droid
             // Register any platform specific implementations
         }
     }
-
-
 }
 

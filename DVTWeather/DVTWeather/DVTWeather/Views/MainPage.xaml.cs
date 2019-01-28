@@ -12,6 +12,12 @@ namespace DVTWeather.Views
         public MainPage()
         {
             InitializeComponent();
+            SlideBackground();
+        }
+
+        public async void SlideBackground()
+        {
+            await CurrentBackground.ScaleTo(1.1, 40000, Easing.SinIn);
         }
     }
 }

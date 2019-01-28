@@ -24,7 +24,7 @@ namespace DVTWeather.Converters
                     case int n when (n >= 701 && n <= 781):
                         return "#57575D";
                     case 800:
-                        return "47AB2F";
+                        return "#47AB2F";
                     case int n when (n >= 801 && n <= 804):
                         return "#54717A";
                     default:

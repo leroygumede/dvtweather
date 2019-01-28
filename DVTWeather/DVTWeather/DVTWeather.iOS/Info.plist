@@ -20,9 +20,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>MinimumOSVersion</key>
-	<string>8.0</string>
+	<string>9.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>DVTWeather</string>
+	<string>DVT</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.company.dvtweather</string>
 	<key>CFBundleVersion</key>
@@ -48,10 +48,12 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
-	<string>DVTWeather</string>
+	<string>DVT</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>New Entry</string>
+	<string>Help us find your location quicker by giving us access to your location</string>
 	<key>UIRequiresFullScreen</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Help us find your location quicker by giving us access to your location</string>
 </dict>
 </plist>

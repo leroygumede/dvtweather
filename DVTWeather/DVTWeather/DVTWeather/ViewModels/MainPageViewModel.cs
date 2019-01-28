@@ -1,29 +1,30 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Prism.Navigation;
 using DVTWeather.Services.Weather;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using DVTWeather.Models;
 using System.Collections.ObjectModel;
+using Prism.Services;
+using DVTWeather.Helpers.Connectivity;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace DVTWeather.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
         private readonly IWeather _weather;
+        private readonly IConnectivity _connectivity;
 
         public ServiceCurrentResult CurrentConditions { get; set; }
-        public ObservableCollection<DVTWeather.Models.List> ForeCastConditions { get; set; }
+        public ObservableCollection<List> ForeCastConditions { get; set; }
 
-        public MainPageViewModel(INavigationService navigationService, IWeather weather)
-            : base(navigationService)
+        public MainPageViewModel(INavigationService navigationService, IPageDialogService pageDialogService, IConnectivity connectivity, IWeather weather)
+            : base(navigationService, pageDialogService)
         {
             _weather = weather;
+            _connectivity = connectivity;
+
+            NoInternet();
 
         }
 
@@ -35,11 +36,65 @@ namespace DVTWeather.ViewModels
 
         public async Task GetWeatherConditions()
         {
-            CurrentConditions = await _weather.GetCurrentWeather();
-            ForeCastConditions = new ObservableCollection<List>(await _weather.GetForecastWeather());
+            try
+            {
+                if (_connectivity.IsConnected())
+                {
+                    var CurrentResult = await _weather.GetCurrentWeather();
 
+                    if (CurrentResult != null)
+                    {
+                        CurrentConditions = CurrentResult;
+                    }
+                    else
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Error", "Unable to fetch Current Location, please make sure location is enabled", "OK");
+                        NoInternet();
+                    }
 
-            Debug.WriteLine(ForeCastConditions);
+                    var ForeCastResult = await _weather.GetForecastWeather();
+                    if (ForeCastResult != null)
+                    {
+                        ForeCastConditions = new ObservableCollection<List>(ForeCastResult);
+                    }
+                    else
+                    {
+                        await _pageDialogService.DisplayAlertAsync("Error", "Unable to fetch forecast , please make sure location is enabled", "OK");
+                        NoInternet();
+                    }
+                }
+                else
+                {
+                    await Task.Delay(100);
+                    await _pageDialogService.DisplayAlertAsync("Internet", "Please enable internet and restart app to continue", "OK");
+                    NoInternet();
+                }
+            }
+            catch (System.Exception ex)
+            {
+                await Task.Delay(100);
+                Debug.WriteLine(ex);
+                await _pageDialogService.DisplayAlertAsync("Internet", "Unknow error, please try again later", "OK");
+                NoInternet();
+            }
+
+        }
+
+        public void NoInternet()
+        {
+            CurrentConditions = new ServiceCurrentResult
+            {
+                weather = new List<Models.Weather>()
+                    {
+                        new Models.Weather(){
+                        id = 800
+                        }
+                    },
+                main = new Main
+                {
+                    temp = 0
+                }
+            };
         }
     }
 }

@@ -1,15 +1,14 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
+﻿using Prism.Mvvm;
 using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Prism.Services;
 
 namespace DVTWeather.ViewModels
 {
     public class ViewModelBase : BindableBase, INavigationAware, IDestructible
     {
-        protected INavigationService NavigationService { get; private set; }
+        protected INavigationService _navigationService { get; }
+
+        protected IPageDialogService _pageDialogService { get; }
 
         private string _title;
         public string Title
@@ -18,9 +17,10 @@ namespace DVTWeather.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public ViewModelBase(INavigationService navigationService)
+        public ViewModelBase(INavigationService navigationService, IPageDialogService pageDialogService)
         {
-            NavigationService = navigationService;
+            _navigationService = navigationService;
+            _pageDialogService = pageDialogService;
         }
 
         #region INavigationAware

@@ -22,8 +22,8 @@ namespace DVTWeather.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
 
-            global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
-            global::FFImageLoading.ImageService.Instance.Initialize();
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
+            FFImageLoading.ImageService.Instance.Initialize();
 
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new iOSInitializer()));

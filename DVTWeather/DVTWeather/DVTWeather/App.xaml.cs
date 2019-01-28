@@ -10,6 +10,8 @@ using DVTWeather.Services.Weather;
 using DVTWeather.Services.Service;
 using DVTWeather.Helpers.Connectivity;
 using DVTWeather.Helpers.Geolocation;
+using DVTWeather.Helpers.Preference;
+using System.Diagnostics;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace DVTWeather
@@ -29,7 +31,20 @@ namespace DVTWeather
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("MainPage");
+            Preference preference = new Preference();
+            if (preference.GetValue("FirstTimeLoad") == true)
+            {
+                Debug.WriteLine("1");
+                await NavigationService.NavigateAsync("SplashScreenPage");
+                preference.SetValue("FirstTimeLoad", false);
+            }
+            else
+            {
+                Debug.WriteLine("2");
+                await NavigationService.NavigateAsync("MainPage");
+            }
+
+
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -38,6 +53,7 @@ namespace DVTWeather
 
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
+            containerRegistry.RegisterForNavigation<SplashScreenPage, SplashScreenPageViewModel>();
 
         }
 
@@ -46,6 +62,7 @@ namespace DVTWeather
             // Services
             container.RegisterSingleton<IWeather, Weather>();
             container.RegisterSingleton<IService, Services.Service.Services>();
+            container.RegisterSingleton<IPreference, Preference>();
 
             // Xamarin Essentails
             container.RegisterSingleton<IConnectivity, Connectivity>();

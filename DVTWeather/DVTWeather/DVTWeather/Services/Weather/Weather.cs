@@ -45,7 +45,7 @@ namespace DVTWeather.Services.Weather
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                return new ServiceCurrentResult();
+                return null;
             }
         }
 
@@ -69,13 +69,13 @@ namespace DVTWeather.Services.Weather
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                return new List<List>();
+                return null;
             }
         }
 
         public async Task<Coord> GetUserLocation()
         {
-            return await _geolocation.GetLocationAsync();
+            return await _geolocation.GetLastKnownLocationAsync();
         }
     }
 }

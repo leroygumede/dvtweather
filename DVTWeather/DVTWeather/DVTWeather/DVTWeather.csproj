@@ -13,6 +13,7 @@
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
     <PackageReference Include="Flurl" Version="2.8.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +25,7 @@
     <Folder Include="Helpers\Connectivity\" />
     <Folder Include="Helpers\Geolocation\" />
     <Folder Include="Converters\" />
+    <Folder Include="Helpers\Preference\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Models\ServiceResult.cs" />

@@ -5,7 +5,11 @@
             <Color x:Key="Sunny">#47AB2F</Color>
             <Color x:Key="Cloudy">#54717A</Color>
             <Color x:Key="Rainy">#57575D</Color>
-          
+            
+<!--            -->
+            <Style x:Key="ContentPageBackground" TargetType="ContentPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource Sunny}" /> 
+            </Style>
   
               <!-- LEFT CONTAINER  -->
             <Style x:Key="WeatherContainer_Left" TargetType="StackLayout">
