@@ -7,6 +7,7 @@ using Prism.Services;
 using DVTWeather.Helpers.Connectivity;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Prism.Commands;
 
 namespace DVTWeather.ViewModels
 {
@@ -14,6 +15,7 @@ namespace DVTWeather.ViewModels
     {
         private readonly IWeather _weather;
         private readonly IConnectivity _connectivity;
+        public DelegateCommand GenerateRandomLocation { get; set; }
 
         public ServiceCurrentResult CurrentConditions { get; set; }
         public ObservableCollection<List> ForeCastConditions { get; set; }
@@ -26,6 +28,8 @@ namespace DVTWeather.ViewModels
 
             NoInternet();
 
+            GenerateRandomLocation = new DelegateCommand(async () => await GetWeatherConditions(true));
+
         }
 
         public override async void OnNavigatingTo(INavigationParameters parameters)
@@ -34,13 +38,13 @@ namespace DVTWeather.ViewModels
             await GetWeatherConditions();
         }
 
-        public async Task GetWeatherConditions()
+        public async Task GetWeatherConditions(bool GenerateLocation = false)
         {
             try
             {
                 if (_connectivity.IsConnected())
                 {
-                    var CurrentResult = await _weather.GetCurrentWeather();
+                    var CurrentResult = await _weather.GetCurrentWeather(GenerateLocation);
 
                     if (CurrentResult != null)
                     {
@@ -52,7 +56,7 @@ namespace DVTWeather.ViewModels
                         NoInternet();
                     }
 
-                    var ForeCastResult = await _weather.GetForecastWeather();
+                    var ForeCastResult = await _weather.GetForecastWeather(GenerateLocation);
                     if (ForeCastResult != null)
                     {
                         ForeCastConditions = new ObservableCollection<List>(ForeCastResult);
@@ -87,7 +91,7 @@ namespace DVTWeather.ViewModels
                 weather = new List<Models.Weather>()
                     {
                         new Models.Weather(){
-                        id = 800
+                        id = 500
                         }
                     },
                 main = new Main

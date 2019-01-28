@@ -18,9 +18,8 @@ namespace DVTWeather.Droid
             base.OnCreate(bundle);
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            //global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
+            global::FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
             global::FFImageLoading.ImageService.Instance.Initialize();
-            //FFImageLoading.Forms.Platform.CachedImageRenderer.Init(enableFastRenderer: false);
             Xamarin.Essentials.Platform.Init(this, bundle);
 
 

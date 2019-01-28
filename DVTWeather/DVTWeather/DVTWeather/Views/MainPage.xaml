@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             x:Class="DVTWeather.Views.MainPage" 
-             xmlns:converter="clr-namespace:DVTWeather.Converters;assembly=DVTWeather" 
-             Style="{StaticResource ContentPageBackground}"
-             BackgroundColor="{Binding CurrentConditions.weather[0].id, Converter={StaticResource weatherColorConverter}}"
-             Padding="0"  
-             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
-             Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="DVTWeather.Views.MainPage" xmlns:converter="clr-namespace:DVTWeather.Converters;assembly=DVTWeather" Style="{StaticResource ContentPageBackground}" BackgroundColor="{Binding CurrentConditions.weather[0].id, Converter={StaticResource weatherColorConverter}}" Padding="0" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    Title="{Binding Title}">
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:WeatherIconConverter x:Key="weatherIconConverter" />
@@ -19,7 +10,7 @@
     </ContentPage.Resources>
     <StackLayout HorizontalOptions="FillAndExpand" Spacing="0" VerticalOptions="FillAndExpand" Margin="0, 0, 0, -2">
         <AbsoluteLayout VerticalOptions="FillAndExpand" Margin="0, 0, 0, -5" HorizontalOptions="FillAndExpand">
-            <Image x:Name="CurrentBackground" Source="{Binding CurrentConditions.weather[0].id, Converter={StaticResource backgroundImageConverter}}" Aspect="Fill" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" />
+            <ffimageloading:CachedImage x:Name="CurrentBackground" Source="{Binding CurrentConditions.weather[0].id,&#xA;                                Converter={StaticResource backgroundImageConverter}}" Aspect="Fill" AbsoluteLayout.LayoutFlags="All" FadeAnimationEnabled="true" AbsoluteLayout.LayoutBounds="0, 1, 1, 1" />
             <StackLayout Padding="15" Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="1, .5, 1, .5" VerticalOptions="StartAndExpand">
                 <StackLayout Spacing="5" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <StackLayout Orientation="Horizontal" Margin="20, 0, 0, 0" HorizontalOptions="CenterAndExpand">
@@ -53,48 +44,54 @@
                 <Label Text="max" TextColor="White" HorizontalTextAlignment="End" />
             </StackLayout>
         </StackLayout>
-         
-        <StackLayout Padding="10" Spacing="10" BackgroundColor="{Binding CurrentConditions.weather[0].id, Converter={StaticResource weatherColorConverter}}" VerticalOptions="FillAndExpand">
+        <StackLayout Padding="10" Margin="0,1,0,0" Spacing="10" BackgroundColor="{Binding CurrentConditions.weather[0].id, Converter={StaticResource weatherColorConverter}}" VerticalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal" Spacing="0">
                 <Label Text="{Binding ForeCastConditions[0].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                 <Image Source="{Binding ForeCastConditions[0].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
-                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                    <Label Text="{Binding ForeCastConditions[0].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                <StackLayout Orientation="Horizontal" Spacing="0" WidthRequest="90" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[0].main.temp}" LineBreakMode="NoWrap" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
                     <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Spacing="0">
                 <Label Text="{Binding ForeCastConditions[1].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                 <Image Source="{Binding ForeCastConditions[1].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
-                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                    <Label Text="{Binding ForeCastConditions[1].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                <StackLayout Orientation="Horizontal" Spacing="0" WidthRequest="90" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[1].main.temp}"  LineBreakMode="NoWrap" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
                     <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Spacing="0">
                 <Label Text="{Binding ForeCastConditions[2].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                 <Image Source="{Binding ForeCastConditions[2].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
-                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                    <Label Text="{Binding ForeCastConditions[2].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                <StackLayout Orientation="Horizontal" Spacing="0" WidthRequest="90" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[2].main.temp}" LineBreakMode="NoWrap" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
                     <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Spacing="0">
                 <Label Text="{Binding ForeCastConditions[3].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                 <Image Source="{Binding ForeCastConditions[3].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
-                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                    <Label Text="{Binding ForeCastConditions[3].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                <StackLayout Orientation="Horizontal" Spacing="0" WidthRequest="90" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[3].main.temp}" LineBreakMode="NoWrap" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
                     <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Spacing="0">
                 <Label Text="{Binding ForeCastConditions[4].dt_txt, StringFormat='{0:dddd}'}" WidthRequest="90" TextColor="White" HorizontalOptions="Start" VerticalTextAlignment="Center" />
                 <Image Source="{Binding ForeCastConditions[4].weather[0].id, Converter={StaticResource weatherIconConverter}}" HeightRequest="25" WidthRequest="25" HorizontalOptions="CenterAndExpand" />
-                <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="End">
-                    <Label Text="{Binding ForeCastConditions[4].main.temp}" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
+                <StackLayout Orientation="Horizontal" Spacing="0" WidthRequest="90" HorizontalOptions="End">
+                    <Label Text="{Binding ForeCastConditions[4].main.temp}" LineBreakMode="NoWrap" TextColor="White" Margin="20, 0, 0, 0" FontSize="20" HorizontalTextAlignment="End" VerticalOptions="Start" />
                     <Label Text="O" TextColor="White" FontSize="10" HorizontalTextAlignment="End" VerticalOptions="StartAndExpand" />
                 </StackLayout>
             </StackLayout>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+            <forms:AnimationView Animation="tap.json" AutoPlay="true" Loop="true" HeightRequest="40" WidthRequest="40" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Label Text="Get Random Location" Margin="10" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" TextColor="White" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding  GenerateRandomLocation}" />
+            </StackLayout.GestureRecognizers>
         </StackLayout>
     </StackLayout>
 </ContentPage>

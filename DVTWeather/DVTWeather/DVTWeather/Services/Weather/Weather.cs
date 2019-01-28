@@ -23,14 +23,14 @@ namespace DVTWeather.Services.Weather
             _geolocation = geolocation;
         }
 
-        public async Task<ServiceCurrentResult> GetCurrentWeather()
+        public async Task<ServiceCurrentResult> GetCurrentWeather(bool RandomLocation = false)
         {
             try
             {
                 if (_connectivity.IsConnected())
                 {
 
-                    var location = await GetUserLocation();
+                    var location = RandomLocation == true ? GetRandomLocation() : await GetUserLocation();
 
                     var payload = new { location.lat, location.lon };
 
@@ -49,13 +49,13 @@ namespace DVTWeather.Services.Weather
             }
         }
 
-        public async Task<IList<List>> GetForecastWeather()
+        public async Task<IList<List>> GetForecastWeather(bool RandomLocation = false)
         {
             try
             {
                 if (_connectivity.IsConnected())
                 {
-                    var location = await GetUserLocation();
+                    var location = RandomLocation == true ? GetRandomLocation() : await GetUserLocation();
 
                     var payload = new { cnt = 5, location.lat, location.lon };
                     var responseCalls = await _service.GetAsync<ServiceForecastResult>("forecast", payload);
@@ -76,6 +76,27 @@ namespace DVTWeather.Services.Weather
         public async Task<Coord> GetUserLocation()
         {
             return await _geolocation.GetLastKnownLocationAsync();
+        }
+
+        public Coord GetRandomLocation()
+        {
+            Random rnd = new Random();
+            int item = rnd.Next(1, 4);
+
+            switch (item)
+            {
+                case 1:
+                    return new Coord { lat = -75.790250, lon = 56.025037 };
+                case 2:
+                    return new Coord { lat = 76.799427, lon = -41.633193 };
+                case 3:
+                    return new Coord { lat = 23.395228, lon = 27.407292 };
+                case 4:
+                    return new Coord { lat = -11.459757, lon = -58.263191 };
+                default:
+                    return new Coord { lat = -75.790250, lon = 56.025037 };
+                    break;
+            }
         }
     }
 }

@@ -194,6 +194,7 @@
     <BundleResource Include="Resources\logo%402x.png" />
     <BundleResource Include="Resources\logo%403x.png" />
     <BundleResource Include="Resources\loading.json" />
+    <BundleResource Include="Resources\tap.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -202,7 +203,7 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.1.0.431" />
     <PackageReference Include="PropertyChanged.Fody">
       <Version>2.6.0</Version>
