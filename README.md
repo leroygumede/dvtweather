@@ -16,3 +16,11 @@ Requirments
 - required to implement one of 2 designs
 - The application should connect to the following API to collect the weather information. , https://openweathermap.org/current,   https://openweathermap.org/forecast5
 - You will be required to change the background image depending on the type of weather (Cloudy, Sunny and Rainy).
+
+
+TODO:
+- [ ] Add unit tests
+- [ ] Add Sonar Cload 
+- [ ] Add lister for internet and geolocation checks
+- [ ] Encrypt Constants class 
+- [ ] Github permissions , only update master with pull request and atleast 1 approval
